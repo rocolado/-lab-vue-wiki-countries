@@ -5,15 +5,17 @@
       <div v-if="this.countries" class="row">
         <div class="col-4">
           <ul class="list-group">
-            <router-link :to="`/list/${country.alpha3Code}`" v-for="(country, index) in countries" :key="index">
+            <router-link v-bind:to="`/list/${country.alpha3Code}`" v-for="(country, index) in countries" :key="index">
               <li class="list-group-item | d-flex flex-column justify-content-center">
-                <img :src="`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`" alt="">
+                <img v-bind:src="`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`" alt="">
+
                 <p class="text-center fw-bold">{{country.name.common}}</p>
                 <p class="text-center fw-bold">{{country.alpha2Code}}</p>
               </li>
             </router-link>
           </ul>
         </div>
+        
         <div class="col-8">
           <router-view></router-view>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <!-- Using individual data properties -->
   <div>
-    <img class="mt-5" :src="`https://flagcdn.com/w320/${alpha2Code.toLowerCase()}.png`" alt="">
+    <img class="mt-5" v-bind:src="`https://flagcdn.com/w320/${alpha2Code.toLowerCase()}.png`" alt="">
     
     <h1>{{name}}</h1>
 
@@ -22,7 +22,7 @@
         <p v-if="borders.length === 0">This country has no borders</p>
 
         <div v-else v-for="(border, index) in borders" :key="index">
-          <router-link :to="`/list/${border}`">{{border}}</router-link>
+          <router-link v-bind:to="`/list/${border}`">{{border}}</router-link>
         </div>
       </li>
     </ul>
@@ -64,6 +64,7 @@
 
     data() {
       return {
+        // Individual data properties
         name: "",
         capital: "",
         area: "",
@@ -71,10 +72,10 @@
         alpha2Code: "",
         alpha3Code: "",
 
-        //Data API on an object
-        countryInfo: {
+        // Data API on an object
+        // countryInfo: {
 
-        },
+        // },
       };
     },
 
@@ -87,15 +88,14 @@
 
         const finalResponse = await response.json();
 
-        console.log(finalResponse);
-
+        // Individual data properties
         this.name = finalResponse.name.common;
         this.capital = finalResponse.capital[0];
         this.area = finalResponse.area;
         this.borders = finalResponse.borders;
         this.alpha2Code = finalResponse.alpha2Code;
 
-        //Data API on an object
+        // Data API on an object
         // this.countryInfo = finalResponse;
       },
     },
